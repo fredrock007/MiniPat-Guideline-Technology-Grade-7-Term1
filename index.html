@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Grade 7 Technology - PAT Completion Worksheet (Hydraulic Security Gate)</title>
+  <style>
+    :root {
+      --ink: #111;
+      --muted: #444;
+      --line: #e5e5e5;
+      --bg: #fafafa;
+      --card: #fff;
+      --accent: #0b57d0;
+      --accent2: #d32f2f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.35;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250,250,250,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .titleblock {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 260px;
+    }
+    .titleblock h1 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .titleblock .sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.15s ease;
+    }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    button.danger {
+      background: #fff;
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0px); }
+
+    main {
+      max-width: 980px;
+      margin: 16px auto;
+      padding: 0 16px 28px;
+    }
+    .sheet {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .meta div {
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .meta b { color: var(--ink); }
+    .pillrow {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+    }
+    .pill {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .pill.accent {
+      border-color: rgba(11,87,208,0.35);
+      background: rgba(11,87,208,0.07);
+      color: #093a88;
+    }
+    h2 {
+      margin: 16px 0 8px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    h3 {
+      margin: 12px 0 6px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #222;
+    }
+    p { margin: 6px 0 10px; color: var(--muted); }
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fff;
+      margin: 10px 0 12px;
+    }
+    .box strong { color: var(--ink); }
+    ul { margin: 6px 0 10px 18px; color: var(--muted); }
+    li { margin: 4px 0; }
+    .task {
+      border-left: 4px solid rgba(11,87,208,0.65);
+      padding-left: 12px;
+      margin: 12px 0;
+    }
+    .task .tname {
+      color: var(--ink);
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+    .task .tnote { font-size: 13px; color: var(--muted); }
+    .checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .checklist input { margin-top: 2px; }
+    pre {
+      margin: 10px 0 0;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fcfcfc;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #222;
+    }
+    .note {
+      border: 1px solid rgba(211,47,47,0.25);
+      background: rgba(211,47,47,0.06);
+      padding: 12px;
+      border-radius: 14px;
+      margin-top: 14px;
+    }
+    .note b { color: var(--accent2); }
+    footer {
+      max-width: 980px;
+      margin: 10px auto 24px;
+      padding: 0 16px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* PRINT */
+    @media print {
+      header, .actions, .pillrow { display: none !important; }
+      body { background: #fff; }
+      main { margin: 0; padding: 0; }
+      .sheet { border: none; box-shadow: none; border-radius: 0; padding: 0; }
+      .meta { grid-template-columns: 1fr 1fr; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="titleblock">
+        <h1>Grade 7 Technology – PAT Completion Worksheet (Hydraulic Security Gate)</h1>
+        <div class="sub">Independent work pack for Thursday & Friday (No model building yet)</div>
+      </div>
+      <div class="actions">
+        <button class="primary" id="downloadBtn">Download Worksheet (HTML)</button>
+        <button id="printBtn">Print / Save as PDF</button>
+        <button class="danger" id="clearChecksBtn" title="Clears tick boxes on this page only">Clear ticks</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="sheet" id="worksheet">
+      <div class="box">
+        <strong>Purpose:</strong> Mr Samuels is not at school today. You must complete the written and drawing parts of your PAT independently.
+        <br><strong>Important:</strong> We will build the model next week. <strong>Do not build today.</strong>
+      </div>
+
+      <div class="meta">
+        <div><b>Learner Name:</b> __________________________</div>
+        <div><b>Class:</b> 7A / 7B / 7C</div>
+        <div><b>Date:</b> __________________________</div>
+        <div><b>Supervisor:</b> __________________________</div>
+      </div>
+
+      <div class="pillrow">
+        <span class="pill accent">Work quietly</span>
+        <span class="pill accent">Use rulers for drawings</span>
+        <span class="pill accent">Complete your PAT pages</span>
+        <span class="pill accent">Ask your group first</span>
+      </div>
+
+      <h2>What you must finish today</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Investigation questions (PAT page 3–4)</label>
+        <label><input type="checkbox"> Design brief + specifications + constraints (PAT page 4)</label>
+        <label><input type="checkbox"> Idea sketches (PAT page 5)</label>
+        <label><input type="checkbox"> 2D working drawing + 2 dimensions (PAT page 7)</label>
+        <label><input type="checkbox"> 3D oblique drawing (PAT page 8)</label>
+        <label><input type="checkbox"> Materials + tools + safety rules (PAT page 10)</label>
+        <label><input type="checkbox"> Flowchart + pseudocode (PAT page 11)</label>
+        <label><input type="checkbox"> Everything neatly done (headings, rulers, labels)</label>
+      </div>
+
+      <h2>Key information you may use</h2>
+      <div class="box">
+        <h3>Hydraulics vs Pneumatics</h3>
+        <ul>
+          <li><strong>Pneumatic system</strong> uses <strong>air or gas</strong> to transfer force.</li>
+          <li><strong>Hydraulic system</strong> uses a <strong>liquid</strong> to transfer force.</li>
+          <li>Liquids are hard to compress, so hydraulics can create a <strong>strong push</strong>.</li>
+          <li>Hydraulic systems often use <strong>oil</strong> in real machines.</li>
+        </ul>
+      </div>
+
+      <h2>Task-by-task instructions (Follow in order)</h2>
+
+      <div class="task">
+        <div class="tname">Task 1 – Investigation (PAT pages 3–4)</div>
+        <div class="tnote">Answer the questions neatly. Use the “Key information” above.</div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 2 – Design Brief (PAT page 4)</div>
+        <div class="tnote">Use the scenario about Disa Primary School’s entrance gate. Write one clear sentence.</div>
+        <div class="box">
+          <strong>Example structure (copy and improve):</strong><br>
+          Design a <em>hydraulic security gate model</em> for <em>Disa Primary School</em> that will <em>open and close safely to control access</em>.
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 3 – Specifications (Write 3) (PAT page 4)</div>
+        <div class="tnote">Specifications = what the design MUST do / include.</div>
+        <div class="box">
+          <strong>Useful specification ideas (choose 3):</strong>
+          <ul>
+            <li>The gate must open and close using a <strong>hydraulic syringe system</strong>.</li>
+            <li>The base must be approximately <strong>40 cm × 20 cm</strong>.</li>
+            <li>The gate must be approximately <strong>15 cm high</strong> and <strong>30 cm wide</strong>.</li>
+            <li>The model must use <strong>simple materials</strong> (cardboard, sticks, syringes, tubing, rubber bands).</li>
+            <li>The gate must include a <strong>visible safety feature</strong> (warning sign / colour marking).</li>
+            <li>The gate must include <strong>levers or linkages</strong> to improve movement and control.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 4 – Constraints (Write 2) (PAT page 4)</div>
+        <div class="tnote">Constraints = limitations (budget, size, materials available, time).</div>
+        <div class="box">
+          <strong>Constraint ideas (choose 2):</strong>
+          <ul>
+            <li>Budget limit: maximum <strong>R150</strong>.</li>
+            <li>Only classroom materials may be used (cardboard, sticks, syringes, tubing, rubber bands).</li>
+            <li>The model must fit on the base size given.</li>
+            <li>Must be safe and suitable for classroom use.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 5 – Initial Idea Sketches (PAT page 5)</div>
+        <div class="tnote">Draw TWO freehand sketches. Add labels and short notes.</div>
+        <div class="box">
+          <strong>Labels to include:</strong>
+          <ul>
+            <li>Base</li>
+            <li>Gate / Gate arm</li>
+            <li>Pivot point (hinge)</li>
+            <li>Syringe (input) + Syringe (output)</li>
+            <li>Tubing</li>
+            <li>Lever / linkage</li>
+            <li>Safety sign / marking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 6 – 2D Working Drawing (PAT page 7)</div>
+        <div class="tnote">Use pencil + ruler only. Copy the gate neatly. Add TWO dimension lines.</div>
+        <div class="box">
+          <strong>2D Drawing checklist:</strong>
+          <ul>
+            <li>Heading included (example: <em>Hydraulic Security Gate – 2D Working Drawing</em>)</li>
+            <li>Ruler used for straight lines</li>
+            <li>Two dimensions shown neatly (only 2)</li>
+            <li>Dark outlines, lighter dimension lines</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 7 – 3D Oblique Drawing (PAT page 8)</div>
+        <div class="tnote">Oblique = the front face stays flat. The depth lines go back at 45°.</div>
+        <div class="box">
+          <strong>Perfect oblique method:</strong>
+          <ol style="margin: 6px 0 10px 18px; color: var(--muted);">
+            <li>Draw the <strong>front view</strong> of the gate first (dark outline).</li>
+            <li>From every corner, draw a line backwards at <strong>45°</strong>.</li>
+            <li>Depth must be <strong>1 block</strong> (one square on the grid).</li>
+            <li>Connect the back edges to close the shape.</li>
+            <li>Keep outlines dark and accurate.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 8 – Planning (Materials, Tools, Safety) (PAT page 10)</div>
+        <div class="tnote">You are not building yet. You are planning what you will use next week.</div>
+        <div class="box">
+          <h3>Materials (examples)</h3>
+          <ul>
+            <li>Cardboard (base + supports)</li>
+            <li>Wooden sticks (frame + reinforcement)</li>
+            <li>2 syringes + plastic tubing (hydraulic system)</li>
+            <li>Rubber bands (tension / return)</li>
+            <li>Glue / tape</li>
+            <li>Paper fasteners / wire / beads (pivot)</li>
+          </ul>
+          <h3>Tools (examples)</h3>
+          <ul>
+            <li>Scissors / cutting knife (with supervision)</li>
+            <li>Ruler</li>
+            <li>Nail / awl (to make holes)</li>
+            <li>Pliers</li>
+          </ul>
+          <h3>Safety rules (write 2)</h3>
+          <ul>
+            <li>Always cut <strong>away</strong> from your body and keep fingers clear.</li>
+            <li>Do not run with sharp tools. Use tools carefully and return them when done.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="tname">Task 9 – Flowchart + Pseudocode (PAT page 11)</div>
+        <div class="tnote">Use the template below. You may copy it neatly into your PAT.</div>
+
+        <div class="box">
+          <h3>Flowchart template (copy this)</h3>
+          <pre>START
+  ↓
+Read the task + plan the design
+  ↓
+Build the base (40 cm × 20 cm)
+  ↓
+Build the gate frame + supports
+  ↓
+Create pivot point (hinge)
+  ↓
+Connect syringes + tubing (hydraulic system)
+  ↓
+Test open/close movement
+  ↓
+Improve and strengthen model
+  ↓
+END</pre>
+
+          <h3>Pseudocode template (copy this)</h3>
+          <pre>BEGIN
+  Collect materials and tools
+  Build and strengthen base
+  Build gate frame and attach to base
+  Make pivot point so gate can move
+  Connect Syringe A to Syringe B using tubing
+  Attach Syringe B to the gate mechanism
+  Push/pull Syringe A to open/close gate
+  Test movement and fix problems
+END</pre>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>Reminder:</b> No physical building today. Your job is to finish the written work and drawings neatly so that next week we can build immediately.
+      </div>
+
+      <h2>Teacher Survival Guide (for the supervisor)</h2>
+      <div class="box">
+        <ul>
+          <li><strong>Today’s focus:</strong> Written + drawings + planning only (PAT pages 3–11).</li>
+          <li><strong>No building today:</strong> Do not hand out syringes/tubing unless Mr Samuels instructed otherwise.</li>
+          <li>Ensure learners use rulers for drawings and keep work neat.</li>
+          <li>If learners finish early: they must improve neatness, labels, headings, and redo weak drawings.</li>
+          <li>Safety: If any cutting tools are used, supervise closely.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Tip: To create a PDF, click <b>Print / Save as PDF</b> and choose “Save as PDF”.
+  </footer>
+
+  <script>
+    (function () {
+      const downloadBtn = document.getElementById("downloadBtn");
+      const printBtn = document.getElementById("printBtn");
+      const clearChecksBtn = document.getElementById("clearChecksBtn");
+
+      function buildDownloadHtml() {
+        // Clone the current document and remove sticky header buttons in the downloaded version (optional).
+        const docClone = document.documentElement.cloneNode(true);
+
+        // In the downloaded copy, keep everything, but you can adjust title or remove scripts if desired.
+        // We'll keep scripts so it remains interactive offline.
+
+        // Ensure the title is friendly
+        docClone.querySelector("title").textContent =
+          "Grade 7 Technology - PAT Completion Worksheet (Hydraulic Security Gate)";
+
+        return "<!DOCTYPE html>\n" + docClone.outerHTML;
+      }
+
+      downloadBtn.addEventListener("click", () => {
+        const html = buildDownloadHtml();
+        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Grade7_Tech_PAT_Completion_Worksheet_Hydraulic_Gate.html";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        URL.revokeObjectURL(url);
+      });
+
+      printBtn.addEventListener("click", () => window.print());
+
+      clearChecksBtn.addEventListener("click", () => {
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      });
+    })();
+  </script>
+</body>
+</html>
